@@ -44,13 +44,12 @@ async function createDataSource(client, name) {
  * @param {Stream} fileStream - File stream to upload
  * @returns {Promise<Object>} Job object
  */
-async function uploadToDataSource(client, dataSourceId, fileStream, filename) {
+async function uploadToDataSource(client, dataSourceId, fileStream) {
     try {
-        const job = await client.sources.files.upload(
-            fileStream,
-            dataSourceId,
-            filename
-        );
+        const job = await client.sources.files.upload({
+            source_id: dataSourceId,
+            file: fileStream,
+        });
         
         console.log(`File upload job created with ID: ${job.id}`);
         return job;

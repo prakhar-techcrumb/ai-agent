@@ -65,7 +65,6 @@ async function uploadToDataSource(req, res) {
         req.app.locals.lettaClient,
         dataSourceId,
         fileStream,
-        req.file.originalname
       );
 
       // Delete the temporary file
